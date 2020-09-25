@@ -1,0 +1,588 @@
+{% comment %}
+ATB-SCHEMA{
+  "name": {
+    "de": "Personalisierter Content",
+    "en": "Custom content",
+    "es": "Contenido personalizado",
+    "fr": "Contenu personnalisé",
+    "it": "Contenuto personalizzato",
+    "ja": "コンテンツをカスタムする",
+    "pt-BR": "Conteúdo personalizado"
+  },
+  "class": "index-section",
+  "id": "custom-content",
+  "banner": "",
+  "icon": "",
+  "tags": "",
+  "description": "",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_id",
+      "label": "Section ID",
+      "info": "Enter a unique ID with only letters and numbers, no spaces",
+      "default": ""
+    },
+    {
+      "type": "text",
+      "id": "atb_title",
+      "label": {
+        "de": "Titel",
+        "en": "Heading",
+        "es": "Título",
+        "fr": "En-tête",
+        "it": "Heading",
+        "ja": "見出し",
+        "pt-BR": "Título"
+      },
+      "default": {
+        "de": "Personalisierter Content",
+        "en": "Custom content",
+        "es": "Contenido personalizado",
+        "fr": "Contenu personnalisé",
+        "it": "Contenuto personalizzato",
+        "ja": "コンテンツをカスタムする",
+        "pt-BR": "Conteúdo personalizado"
+      },
+      "info": ""
+    },
+    {
+      "type": "select",
+      "id": "block_type",
+      "label": "Block Type",
+      "info": "",
+      "default": "",
+      "options": [
+        {
+          "value": "text",
+          "label": "text"
+        },
+        {
+          "value": "image",
+          "label": "image"
+        },
+        {
+          "value": "video",
+          "label": "video"
+        },
+        {
+          "value": "product",
+          "label": "product"
+        },
+        {
+          "value": "collection",
+          "label": "collection"
+        },
+        {
+          "value": "html",
+          "label": "html"
+        }
+      ],
+      "repeatable": "block"
+    },
+    {
+      "type": "text",
+      "id": "block_title",
+      "label": {
+        "de": "Titel",
+        "en": "Heading",
+        "es": "Título",
+        "fr": "En-tête",
+        "it": "Heading",
+        "ja": "見出し",
+        "pt-BR": "Título"
+      },
+      "default": {
+        "de": "Erzählen Sie von Ihrer Marke",
+        "en": "Talk about your brand",
+        "es": "Habla de tu marca",
+        "fr": "Parlez de votre marque",
+        "it": "Parla del tuo brand",
+        "ja": "あなたのブランドについて語る",
+        "pt-BR": "Fale sobre a sua marca"
+      },
+      "repeatable": "block",
+      "info": "",
+      "conditional": "block_type:text"
+    },
+    {
+      "type": "html",
+      "id": "block_text",
+      "label": {
+        "de": "Text",
+        "en": "Text",
+        "es": "Texto",
+        "fr": "Texte",
+        "it": "Testo",
+        "ja": "テキスト",
+        "pt-BR": "Texto"
+      },
+      "default": {
+        "de": "<p>Nutzen Sie diesen Text, um Infos über Ihre Marke mitzuteilen. Beschreiben Sie ein Produkt, kündigen Sie etwas an oder heißen Sie Kunden willkommen.</p>",
+        "en": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>",
+        "es": "<p>Usa este texto para compartir información sobre tu marca con tus clientes. Describe un producto, comparte anuncios o recibe clientes en tu tienda.</p>",
+        "fr": "<p>Utilisez ce texte pour partager des informations sur votre marque. Décrivez un produit, partagez des annonces, ou souhaitez la bienvenue à vos clients.</p>",
+        "it": "<p>Utilizza questo testo per condividere le informazioni sul tuo brand con i tuoi clienti. Descrivi un prodotto, condividi gli annunci o dai il benvenuto ai clienti nel tuo negozio.</p>",
+        "ja": "<p>このテキストを使用して、あなたのブランドに関する情報をお客様と共有します。商品を説明したり、告知の共有をしたり、あるいはあなたのストアのお客様を歓迎します。</p>",
+        "pt-BR": "<p>Use este texto para compartilhar informações sobre sua marca com seus clientes. Descreva um produto, compartilhe anúncios ou receba os clientes em sua loja.</p>"
+      },
+      "repeatable": "block",
+      "info": "",
+      "conditional": "block_type:text"
+    },
+    {
+      "type": "select",
+      "id": "block_width",
+      "label": {
+        "de": "Breite des Elements",
+        "en": "Container width",
+        "es": "Ancho del contenedor",
+        "fr": "Largeur du conteneur",
+        "it": "Larghezza contenitore",
+        "ja": "コンテナーの幅",
+        "pt-BR": "Largura do recipiente"
+      },
+      "default": "50%",
+      "options": [
+        {
+          "value": "25%",
+          "label": {
+            "de": "25%",
+            "en": "25%",
+            "es": "25%",
+            "fr": "25 %",
+            "it": "25%",
+            "ja": "25%",
+            "pt-BR": "25%"
+          }
+        },
+        {
+          "value": "33%",
+          "label": {
+            "de": "33%",
+            "en": "33%",
+            "es": "33%",
+            "fr": "33 %",
+            "it": "33%",
+            "ja": "33%",
+            "pt-BR": "33%"
+          }
+        },
+        {
+          "value": "50%",
+          "label": {
+            "de": "50%",
+            "en": "50%",
+            "es": "50%",
+            "fr": "50 %",
+            "it": "50%",
+            "ja": "50%",
+            "pt-BR": "50%"
+          }
+        },
+        {
+          "value": "66%",
+          "label": {
+            "de": "66%",
+            "en": "66%",
+            "es": "66%",
+            "fr": "66 %",
+            "it": "66%",
+            "ja": "66%",
+            "pt-BR": "66%"
+          }
+        },
+        {
+          "value": "75%",
+          "label": {
+            "de": "75%",
+            "en": "75%",
+            "es": "75%",
+            "fr": "75 %",
+            "it": "75%",
+            "ja": "75%",
+            "pt-BR": "75%"
+          }
+        },
+        {
+          "value": "100%",
+          "label": {
+            "de": "100%",
+            "en": "100%",
+            "es": "100%",
+            "fr": "100 %",
+            "it": "100%",
+            "ja": "100%",
+            "pt-BR": "100%"
+          }
+        }
+      ],
+      "repeatable": "block",
+      "info": ""
+    },
+    {
+      "type": "select",
+      "id": "block_alignment",
+      "label": {
+        "de": "Vertikale Ausrichtung",
+        "en": "Vertical alignment",
+        "es": "Alineación vertical",
+        "fr": "Alignement vertical",
+        "it": "Allineamento verticale",
+        "ja": "垂直アラインメント",
+        "pt-BR": "Alinhamento vertical"
+      },
+      "default": "center",
+      "options": [
+        {
+          "value": "top-middle",
+          "label": {
+            "de": "Oben",
+            "en": "Top",
+            "es": "Superior",
+            "fr": "Haut",
+            "it": "In alto",
+            "ja": "上",
+            "pt-BR": "Acima"
+          }
+        },
+        {
+          "value": "center",
+          "label": {
+            "de": "Mitte",
+            "en": "Middle",
+            "es": "Al medio",
+            "fr": "Milieu",
+            "it": "Al centro",
+            "ja": "中央",
+            "pt-BR": "Meio"
+          }
+        },
+        {
+          "value": "bottom-middle",
+          "label": {
+            "de": "Unten",
+            "en": "Bottom",
+            "es": "Inferior",
+            "fr": "Bas",
+            "it": "In basso",
+            "ja": "下",
+            "pt-BR": "Abaixo"
+          }
+        }
+      ],
+      "repeatable": "block",
+      "info": ""
+    },
+    {
+      "type": "select",
+      "id": "block_align_text",
+      "label": {
+        "de": "Horizontale Ausrichtung",
+        "en": "Horizontal alignment",
+        "es": "Alineación horizontal",
+        "fr": "Alignement horizontal",
+        "it": "Allineamento orizzontale",
+        "ja": "水平アラインメント",
+        "pt-BR": "Alinhamento horizontal"
+      },
+      "default": "left",
+      "options": [
+        {
+          "value": "left",
+          "label": {
+            "de": "Links",
+            "en": "Left",
+            "es": "Izquierda",
+            "fr": "Gauche",
+            "it": "Sinistra",
+            "ja": "左",
+            "pt-BR": "Esquerda"
+          }
+        },
+        {
+          "value": "center",
+          "label": {
+            "de": "Mittig",
+            "en": "Centered",
+            "es": "Centrada",
+            "fr": "Centré",
+            "it": "Centrato",
+            "ja": "中央揃え",
+            "pt-BR": "Centralizado"
+          }
+        },
+        {
+          "value": "right",
+          "label": {
+            "de": "Rechts",
+            "en": "Right",
+            "es": "Derecha",
+            "fr": "Droite",
+            "it": "Destra",
+            "ja": "右",
+            "pt-BR": "Direita"
+          }
+        }
+      ],
+      "repeatable": "block",
+      "info": "",
+      "conditional": "block_type:text"
+    },
+    {
+      "type": "image_picker",
+      "id": "block_image",
+      "label": {
+        "de": "Foto",
+        "en": "Image",
+        "es": "Imagen",
+        "fr": "Image",
+        "it": "Immagine",
+        "ja": "画像",
+        "pt-BR": "Imagem"
+      },
+      "repeatable": "block",
+      "info": "",
+      "conditional": "block_type:image"
+    },
+    {
+      "type": "select",
+      "id": "block_video_url_type",
+      "label": "YouTube or Vimeo link Type",
+      "default": "youtube",
+      "options": [
+        {
+          "value": "youtube",
+          "label": "Youtube"
+        },
+        {
+          "value": "vimeo",
+          "label": "Vimeo"
+        }
+      ],
+      "repeatable": "block",
+      "conditional": "block_type:video"
+    },
+    {
+      "type": "text",
+      "id": "block_video_url_id",
+      "label": "YouTube or Vimeo ID",
+      "default": "_9VUPq3SxOc",
+      "repeatable": "block",
+      "conditional": "block_type:video"
+    },
+    {
+      "type": "product",
+      "id": "block_product",
+      "label": {
+        "de": "Produkt",
+        "en": "Product",
+        "es": "Producto",
+        "fr": "Produit",
+        "it": "Prodotto",
+        "ja": "商品",
+        "pt-BR": "Produto"
+      },
+      "repeatable": "block",
+      "info": "",
+      "conditional": "block_type:product"
+    },
+    {
+      "type": "collection",
+      "id": "block_collection",
+      "label": {
+        "de": "Kategorie",
+        "en": "Collection",
+        "es": "Colección",
+        "fr": "Collection",
+        "it": "Collezione",
+        "ja": "コレクション",
+        "pt-BR": "Coleção"
+      },
+      "repeatable": "block",
+      "info": "",
+      "conditional": "block_type:collection"
+    },
+    {
+      "type": "html",
+      "id": "block_code",
+      "label": {
+        "de": "HTML",
+        "en": "HTML",
+        "es": "HTML",
+        "fr": "HTML",
+        "it": "HTML",
+        "ja": "HTML",
+        "pt-BR": "HTML"
+      },
+      "repeatable": "block",
+      "info": "",
+      "conditional": "block_type:html"
+    }
+  ],
+  "warnings": [
+  ]
+}ATB-SCHEMA
+{% endcomment %}
+
+
+{% include 'atb-render' field:'section_id' %}
+{% assign section_id = val %}
+{% include 'atb-render' field:'atb_title' %}
+{% assign atb_title = val %}
+{% include 'atb-render' field:'block_type' %}
+{% assign block_type = val %}
+{% include 'atb-render' field:'block_title' %}
+{% assign block_title = val %}
+{% include 'atb-render' field:'block_text' %}
+{% assign block_text = val %}
+{% include 'atb-render' field:'block_width' %}
+{% assign block_width = val %}
+{% include 'atb-render' field:'block_alignment' %}
+{% assign block_alignment = val %}
+{% include 'atb-render' field:'block_align_text' %}
+{% assign block_align_text = val %}
+{% include 'atb-render' field:'block_image' %}
+{% assign block_image = val %}
+{% include 'atb-render' field:'block_product' %}
+{% assign block_product = val %}
+{% include 'atb-render' field:'block_collection' %}
+{% assign block_collection = val %}
+{% include 'atb-render' field:'block_code' %}
+{% assign block_code = val %}
+{% include 'atb-render' field:'block_video_url_id' %}
+{% assign block_video_url_id = val %}
+{% include 'atb-render' field:'block_video_url_type' %}
+{% assign block_video_url_type = val %}
+
+<section id="shopify-section-{{section_id}}" class="shopify-section index-section">
+<div class="page-width">
+  {% if atb_title != blank %}
+    <div class="section-header text-center">
+      <h4 class="h2">{{ atb_title | escape }}</h4>
+    </div>
+  {% endif %}
+
+  <div class="custom-content">
+    {% for block_type0 in block_type %}
+{% assign my_image_key0 = block_image[forloop.index0]| split: '/files/' | last %}
+{% assign my_image0 = images[my_image_key0] %}
+      {% case block_width[forloop.index0] %}
+        {% when '25%' %}
+          {%- assign max_height = 250 -%}
+          {%- assign block_width = 'small--one-half medium-up--one-quarter' -%}
+        {% when '33%' %}
+          {%- assign max_height = 345 -%}
+          {%- assign block_width = 'small--one-half medium-up--one-third' -%}
+        {% when '50%' %}
+          {%- assign max_height = 530 -%}
+          {%- assign block_width = 'small--one-half medium-up--one-half' -%}
+        {% when '66%' %}
+          {%- assign max_height = 720 -%}
+          {%- assign block_width = 'two-thirds' -%}
+        {% when '75%' %}
+          {%- assign max_height = 810 -%}
+          {%- assign block_width = 'three-quarters' -%}
+        {% when '100%' %}
+          {%- assign max_height = 1090 -%}
+          {%- assign block_width = 'one-whole' -%}
+      {% endcase %}
+
+      {% if block_type[forloop.index0] == 'image' %}
+        {% capture img_id %}CustomImage--{{ forloop.index }}-{{ my_image0.id }}{% endcapture %}
+        {% capture img_wrapper_id %}CustomImageWrapper--{{ forloop.index }}-{{ my_image0.id }}{% endcapture %}
+
+        {% unless my_image0 == blank %}
+          {% include 'atb-image-style' with image: my_image0, small_style: false, width: max_height, height: max_height, wrapper_id: img_wrapper_id, img_id: img_id %}
+        {% endunless %}
+      {% endif %}
+
+      <div class="custom__item custom__item--{{block.id}} {{ block_width }} {% if block_alignment[forloop.index0] %}align--{{ block_alignment[forloop.index0] }}{% endif %}" {{ block.shopify_attributes }}>
+        <div class="custom__item-inner custom__item-inner--{{ block_type[forloop.index0] }}"{% if block_type[forloop.index0] == 'image' %} id="{{ img_wrapper_id }}"{% endif %}>
+          {% case block_type[forloop.index0] %}
+            {% when 'image' %}
+              {% if my_image0 != blank %}
+                {%- assign img_url = my_image0 | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+                <div style="padding-top:{{ 1 | divided_by: my_image0.aspect_ratio | times: 100}}%;">
+                  <img id="{{ img_id }}"
+                       class="custom__image lazyload js"
+                       src="{{ my_image0 | img_url: '300x300' }}"
+                       data-src="{{ img_url }}"
+                       data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+                       data-aspectratio="{{ my_image0.aspect_ratio }}"
+                       data-sizes="auto"
+                       alt="{{ my_image0.alt | escape }}">
+                </div>
+                <noscript>
+                  {% capture image_size %}{{ max_height }}x{% endcapture %}
+                  {{ my_image0 | img_url: image_size, scale: 2, crop: 'top' | img_tag: block_image[forloop.index0].alt, 'custom__image' }}
+                </noscript>
+              {% else %}
+                {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+              {% endif %}
+            {% when 'text' %}
+              <div class="medium-up--text-{{ block_align_text[forloop.index0] }}">
+                {% if block_title[forloop.index0] != blank %}
+                  <h4 class="h3">{{ block_title[forloop.index0] | escape }}</h4>
+                {% endif %}
+                {% if block_text[forloop.index0] != blank %}
+                  <div class="rte-setting rte">{{ block_text[forloop.index0] }}</div>
+                {% endif %}
+              </div>
+            {% when 'video' %}
+              <div class="video-wrapper">
+                {% if block_video_url_id[forloop.index0] == blank %}
+                  <iframe src="//www.youtube.com/embed/_9VUPq3SxOc?rel=0&showinfo=0&vq=720" width="850" height="480" frameborder="0" allowfullscreen></iframe>
+                {% else %}
+                  {% if block_video_url_type[forloop.index0] == "youtube" %}
+                    <iframe src="//www.youtube.com/embed/{{ block_video_url_id[forloop.index0] }}?rel=0&showinfo=0&vq=720" width="850" height="480" frameborder="0" allowfullscreen></iframe>
+                  {% endif %}
+                  {% if block_video_url_type[forloop.index0] == "vimeo" %}
+                    <iframe src="//player.vimeo.com/video/{{ block_video_url_id[forloop.index0] }}?byline=0&portrait=0&badge=0" width="850" height="480" frameborder="0" allowfullscreen></iframe>
+                  {% endif %}
+                {% endif %}
+              </div>
+            {% when 'product' %}
+              {%- assign product = all_products[block_product[forloop.index0]] -%}
+              {% if product.title.size > 0 %}
+                {% include 'product-card-grid', max_height: max_height %}
+              {% else %}
+                {% comment %}
+                  No product yet. Show onboarding one.
+                {% endcomment %}
+                <div class="grid-view-item">
+                  <a class="grid-view-item__link" href="#">
+                    <div class="grid-view-item__image">
+                      {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+                      {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+                    </div>
+                    <div class="h4 grid-view-item__title">{{ 'homepage.onboarding.product_title' | t }}</div>
+                    <div class="grid-view-item__meta">
+                      {{ 1999 | money }}
+                    </div>
+                  </a>
+                </div>
+              {% endif %}
+            {% when 'collection' %}
+              {%- assign collection = collections[block_collection[forloop.index0]] -%}
+              {% include 'collection-grid-item' %}
+            {% when 'html' %}
+              {% if block_code[forloop.index0] != blank %}
+                {{ block_code[forloop.index0] }}
+              {% endif %}
+          {% endcase %}
+        </div>
+      </div>
+
+    {% endfor %}
+  </div>
+
+  {% if block_type.size == 0 %}
+    {% include 'no-blocks' %}
+  {% endif %}
+</div>
+
+
+
+
+</section>

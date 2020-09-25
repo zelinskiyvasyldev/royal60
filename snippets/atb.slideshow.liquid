@@ -1,0 +1,780 @@
+{% comment %}
+ATB-SCHEMA{
+  "name": {
+    "de": "Slideshow",
+    "en": "Slideshow",
+    "es": "Diapositivas",
+    "fr": "Diaporama",
+    "it": "Presentazione",
+    "ja": "スライドショー",
+    "pt-BR": "Apresentação de slides"
+  },
+  "class": "index-section index-section--flush index-section--slideshow",
+  "max_blocks": 6,
+  "id": "slideshow",
+  "banner": "",
+  "icon": "",
+  "tags": "",
+  "description": "",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_id",
+      "label": "Section ID",
+      "info": "Enter a unique ID with only letters and numbers, no spaces",
+      "default": ""
+    },
+    {
+      "type": "select",
+      "id": "atb_slideshow_height",
+      "label": {
+        "de": "Diahöhe",
+        "en": "Slide height",
+        "es": "Altura de diapositiva",
+        "fr": "Hauteur de la diapositive",
+        "it": "Altezza slide",
+        "ja": "スライドの高さ",
+        "pt-BR": "Altura do slide"
+      },
+      "default": "adapt",
+      "info": "",
+      "options": [
+        {
+          "label": {
+            "de": "An erstes Bild anpassen",
+            "en": "Adapt to first image",
+            "es": "Adaptar a la primera imagen",
+            "fr": "Adapter à la première image",
+            "it": "Adatta alla prima immagine",
+            "ja": "最初の画像に適応する",
+            "pt-BR": "Adaptar à primeira imagem"
+          },
+          "value": "adapt"
+        },
+        {
+          "label": {
+            "de": "Klein",
+            "en": "Small",
+            "es": "Pequeña",
+            "fr": "Petite",
+            "it": "Piccolo",
+            "ja": "小",
+            "pt-BR": "Pequeno"
+          },
+          "value": "small"
+        },
+        {
+          "label": {
+            "de": "Mittel",
+            "en": "Medium",
+            "es": "Mediana",
+            "fr": "Moyenne",
+            "it": "Medio",
+            "ja": "中",
+            "pt-BR": "Médio"
+          },
+          "value": "medium"
+        },
+        {
+          "label": {
+            "de": "Groß",
+            "en": "Large",
+            "es": "Grande",
+            "fr": "Grande",
+            "it": "Grande",
+            "ja": "大",
+            "pt-BR": "Grande"
+          },
+          "value": "large"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "atb_text_size",
+      "label": {
+        "de": "Textgröße",
+        "en": "Text size",
+        "es": "Tamaño del texto",
+        "fr": "Taille du texte",
+        "it": "Dimensione testo",
+        "ja": "文字サイズ",
+        "pt-BR": "Tamanho do texto"
+      },
+      "default": "medium",
+      "options": [
+        {
+          "label": {
+            "de": "Mittel",
+            "en": "Medium",
+            "es": "Mediano",
+            "fr": "Moyenne",
+            "it": "Medio",
+            "ja": "中",
+            "pt-BR": "Médio"
+          },
+          "value": "medium"
+        },
+        {
+          "label": {
+            "de": "Groß",
+            "en": "Large",
+            "es": "Grande",
+            "fr": "Grande",
+            "it": "Grande",
+            "ja": "大",
+            "pt-BR": "Grande"
+          },
+          "value": "large"
+        }
+      ],
+      "info": ""
+    },
+    {
+      "type": "select",
+      "id": "atb_text_alignment",
+      "label": {
+        "de": "Textausrichtung",
+        "en": "Text alignment",
+        "es": "Alineación de texto",
+        "fr": "Alignement du texte",
+        "it": "Allineamento del testo",
+        "ja": "テキストアラインメント",
+        "pt-BR": "Alinhamento de texto"
+      },
+      "default": "center center",
+      "options": [
+        {
+          "label": {
+            "de": "Oben links",
+            "en": "Top left",
+            "es": "Superior izquierda",
+            "fr": "En haut à gauche",
+            "it": "In alto a sinistra",
+            "ja": "左上",
+            "pt-BR": "Superior esquerdo"
+          },
+          "value": "left top"
+        },
+        {
+          "label": {
+            "de": "Oben Mitte",
+            "en": "Top center",
+            "es": "Superior al centro",
+            "fr": "En haut au centre",
+            "it": "In alto al centro",
+            "ja": "中央上",
+            "pt-BR": "Superior centro"
+          },
+          "value": "center top"
+        },
+        {
+          "label": {
+            "de": "Oben rechts",
+            "en": "Top right",
+            "es": "Superior derecha",
+            "fr": "En haut à droite",
+            "it": "In alto a destra",
+            "ja": "右上",
+            "pt-BR": "Superior direito"
+          },
+          "value": "right top"
+        },
+        {
+          "label": {
+            "de": "Mitte links",
+            "en": "Middle left",
+            "es": "Al medio a la izquierda",
+            "fr": "Au milieu à gauche",
+            "it": "Nel mezzo a sinistra",
+            "ja": "中央左",
+            "pt-BR": "Meio esquerdo"
+          },
+          "value": "left center"
+        },
+        {
+          "label": {
+            "de": "Mitte mittig",
+            "en": "Middle center",
+            "es": "Al medio al centro",
+            "fr": "Centrée au milieu",
+            "it": "In mezzo",
+            "ja": "中央中",
+            "pt-BR": "Meio centro"
+          },
+          "value": "center center"
+        },
+        {
+          "label": {
+            "de": "Mitte rechts",
+            "en": "Middle right",
+            "es": "Al medio a la derecha",
+            "fr": "Au milieu à droite",
+            "it": "Nel mezzo a destra",
+            "ja": "中央右",
+            "pt-BR": "Meio direito"
+          },
+          "value": "right center"
+        },
+        {
+          "label": {
+            "de": "Unten links",
+            "en": "Bottom left",
+            "es": "Inferior izquierda",
+            "fr": "En bas à gauche",
+            "it": "In basso a sinistra",
+            "ja": "左下",
+            "pt-BR": "Inferior esquerdo"
+          },
+          "value": "left bottom"
+        },
+        {
+          "label": {
+            "de": "Unten mittig",
+            "en": "Bottom center",
+            "es": "Inferior al centro",
+            "fr": "En bas au centre",
+            "it": "In basso al centro",
+            "ja": "中央下",
+            "pt-BR": "Inferior centro"
+          },
+          "value": "center bottom"
+        },
+        {
+          "label": {
+            "de": "Unten rechts",
+            "en": "Bottom right",
+            "es": "Inferior derecha",
+            "fr": "En bas à droite",
+            "it": "In basso a destra",
+            "ja": "右下",
+            "pt-BR": "Inferior direito"
+          },
+          "value": "right bottom"
+        }
+      ],
+      "info": ""
+    },
+    {
+      "type": "checkbox",
+      "id": "atb_show_overlay",
+      "label": {
+        "de": "Überlagerung zeigen",
+        "en": "Show overlay",
+        "es": "Mostrar superposición",
+        "fr": "Afficher la superposition",
+        "it": "Mostra sovrapposizione",
+        "ja": "オーバーレイを表示する",
+        "pt-BR": "Exibir sobreposição"
+      },
+      "default": true,
+      "info": ""
+    },
+    {
+      "type": "checkbox",
+      "id": "atb_autorotate",
+      "label": {
+        "de": "Auto-rotieren der Slides",
+        "en": "Auto-rotate slides",
+        "es": "Rotar las diapositivas automáticamente",
+        "fr": "Rotation automatique des diapositives",
+        "it": "Ruota slide automaticamente",
+        "ja": "スライドの自動切り替え",
+        "pt-BR": "Rodar os slides automaticamente"
+      },
+      "default": false,
+      "info": ""
+    },
+    {
+      "type": "range",
+      "id": "atb_autorotate_speed",
+      "label": {
+        "de": "Slides überall ändern",
+        "en": "Change slides every",
+        "es": "Cambiar diapositivas cada",
+        "fr": "Changer de diapositive toutes les",
+        "it": "Cambia slide ogni",
+        "ja": "スライドを変更する間隔",
+        "pt-BR": "Mudar os slides a cada"
+      },
+      "max": 9,
+      "min": 3,
+      "step": 2,
+      "unit": {
+        "de": " s",
+        "en": " s",
+        "es": " s",
+        "fr": " s",
+        "it": " s",
+        "ja": " s",
+        "pt-BR": " s"
+      },
+      "default": 5,
+      "info": ""
+    },
+    {
+      "type": "text",
+      "id": "blocks",
+      "label": "Block ID",
+      "info": "Enter a unique ID with only letters and numbers, no spaces",
+      "default": "",
+      "repeatable": "Image-slide"
+    },
+    {
+      "type": "image_picker",
+      "id": "block_image",
+      "label": {
+        "de": "Foto",
+        "en": "Image",
+        "es": "Imagen",
+        "fr": "Image",
+        "it": "Immagine",
+        "ja": "画像",
+        "pt-BR": "Imagem"
+      },
+      "repeatable": "Image-slide",
+      "info": ""
+    },
+    {
+      "type": "select",
+      "id": "block_alignment",
+      "label": {
+        "de": "Foto-Position",
+        "en": "Image position",
+        "es": "Alineación de imagen",
+        "fr": "Position de l'image",
+        "it": "Allineamento immagine",
+        "ja": "画像アラインメント",
+        "pt-BR": "Alinhamento da imagem"
+      },
+      "default": "center center",
+      "options": [
+        {
+          "label": {
+            "de": "Oben links",
+            "en": "Top left",
+            "es": "Superior izquierda",
+            "fr": "En haut à gauche",
+            "it": "In alto a sinistra",
+            "ja": "左上",
+            "pt-BR": "Superior esquerdo"
+          },
+          "value": "left top"
+        },
+        {
+          "label": {
+            "de": "Oben Mitte",
+            "en": "Top center",
+            "es": "Superior al centro",
+            "fr": "En haut au centre",
+            "it": "In alto al centro",
+            "ja": "中央上",
+            "pt-BR": "Superior centro"
+          },
+          "value": "center top"
+        },
+        {
+          "label": {
+            "de": "Oben rechts",
+            "en": "Top right",
+            "es": "Superior derecha",
+            "fr": "En haut à droite",
+            "it": "In alto a destra",
+            "ja": "右上",
+            "pt-BR": "Superior direito"
+          },
+          "value": "right top"
+        },
+        {
+          "label": {
+            "de": "Mitte links",
+            "en": "Middle left",
+            "es": "Al medio a la izquierda",
+            "fr": "Au milieu à gauche",
+            "it": "Nel mezzo a sinistra",
+            "ja": "中央左",
+            "pt-BR": "Meio esquerdo"
+          },
+          "value": "left center"
+        },
+        {
+          "label": {
+            "de": "Mitte mittig",
+            "en": "Middle center",
+            "es": "Al medio al centro",
+            "fr": "Centrée au milieu",
+            "it": "In mezzo",
+            "ja": "中央中",
+            "pt-BR": "Meio centro"
+          },
+          "value": "center center"
+        },
+        {
+          "label": {
+            "de": "Mitte rechts",
+            "en": "Middle right",
+            "es": "Al medio a la derecha",
+            "fr": "Au milieu à droite",
+            "it": "Nel mezzo a destra",
+            "ja": "中央右",
+            "pt-BR": "Meio direito"
+          },
+          "value": "right center"
+        },
+        {
+          "label": {
+            "de": "Unten links",
+            "en": "Bottom left",
+            "es": "Inferior izquierda",
+            "fr": "En bas à gauche",
+            "it": "In basso a sinistra",
+            "ja": "左下",
+            "pt-BR": "Inferior esquerdo"
+          },
+          "value": "left bottom"
+        },
+        {
+          "label": {
+            "de": "Unten mittig",
+            "en": "Bottom center",
+            "es": "Inferior al centro",
+            "fr": "En bas au centre",
+            "it": "In basso al centro",
+            "ja": "中央下",
+            "pt-BR": "Inferior centro"
+          },
+          "value": "center bottom"
+        },
+        {
+          "label": {
+            "de": "Unten rechts",
+            "en": "Bottom right",
+            "es": "Inferior derecha",
+            "fr": "En bas à droite",
+            "it": "In basso a destra",
+            "ja": "右下",
+            "pt-BR": "Inferior direito"
+          },
+          "value": "right bottom"
+        }
+      ],
+      "repeatable": "Image-slide",
+      "info": ""
+    },
+    {
+      "type": "text",
+      "id": "block_slide_title",
+      "label": {
+        "de": "Titel",
+        "en": "Heading",
+        "es": "Título",
+        "fr": "En-tête",
+        "it": "Heading",
+        "ja": "見出し",
+        "pt-BR": "Título"
+      },
+      "default": {
+        "de": "Foto-Slide",
+        "en": "Image slide",
+        "es": "Diapositiva de imagen",
+        "fr": "Diapositive (image)",
+        "it": "Slide immagine",
+        "ja": "画像スライド",
+        "pt-BR": "Slide de imagem"
+      },
+      "repeatable": "Image-slide",
+      "info": ""
+    },
+    {
+      "type": "text",
+      "id": "block_subheading",
+      "label": {
+        "de": "Untertitel",
+        "en": "Subheading",
+        "es": "Subtítulo",
+        "fr": "Sous-titre",
+        "it": "Sottotitolo",
+        "ja": "小見出し",
+        "pt-BR": "Subtítulo"
+      },
+      "default": {
+        "de": "Erzählen Sie Ihre Geschichte mit Fotos",
+        "en": "Tell your brand's story through images",
+        "es": "Cuenta la historia de tu marca a través de videos e imágenes",
+        "fr": "Racontez votre histoire avec des images",
+        "it": "Racconta la storia del tuo brand con video e immagini",
+        "ja": "あなたのブランドのストーリーをビデオや画像で伝える",
+        "pt-BR": "Conte a história da sua marca com vídeos e imagens"
+      },
+      "repeatable": "Image-slide",
+      "info": ""
+    },
+    {
+      "type": "text",
+      "id": "block_button_label",
+      "label": {
+        "de": "Button-Name",
+        "en": "Button label",
+        "es": "Etiqueta de botón",
+        "fr": "Texte du bouton",
+        "it": "Etichetta pulsante",
+        "ja": "ボタンラベル",
+        "pt-BR": "Etiqueta do botão"
+      },
+      "repeatable": "Image-slide",
+      "info": ""
+    },
+    {
+      "type": "text",
+      "id": "block_button_link",
+      "label": {
+        "de": "Button-Link",
+        "en": "Button link",
+        "es": "Enlace de la diapositiva",
+        "fr": "Lien du bouton",
+        "it": "Link slide",
+        "ja": "スライドリンク",
+        "pt-BR": "Link do slide"
+      },
+      "repeatable": "Image-slide",
+      "info": ""
+    }
+  ],
+  "warnings": [
+    "repeating image fields may not be properly handled"
+  ]
+}ATB-SCHEMA
+{% endcomment %}
+
+
+{% include 'atb-render' field:'section_id' %}
+{% assign section_id = val %}
+{% include 'atb-render' field:'atb_slideshow_height' %}
+{% assign atb_slideshow_height = val %}
+{% include 'atb-render' field:'atb_text_size' %}
+{% assign atb_text_size = val %}
+{% include 'atb-render' field:'atb_text_alignment' %}
+{% assign atb_text_alignment = val %}
+{% include 'atb-render' field:'atb_show_overlay' %}
+{% assign atb_show_overlay = val %}
+{% include 'atb-render' field:'atb_autorotate' %}
+{% assign atb_autorotate = val %}
+{% include 'atb-render' field:'atb_autorotate_speed' %}
+{% assign atb_autorotate_speed = val %}
+{% include 'atb-render' field:'blocks' %}
+{% assign blocks = val %}
+{% include 'atb-render' field:'block_image' %}
+{% assign block_image = val %}
+{% include 'atb-render' field:'block_alignment' %}
+{% assign block_alignment = val %}
+{% include 'atb-render' field:'block_slide_title' %}
+{% assign block_slide_title = val %}
+{% include 'atb-render' field:'block_subheading' %}
+{% assign block_subheading = val %}
+{% include 'atb-render' field:'block_button_label' %}
+{% assign block_button_label = val %}
+{% include 'atb-render' field:'block_button_link' %}
+{% assign block_button_link = val %}
+{% if atb_show_overlay == blank %}
+{% assign atb_show_overlay = false %}
+{% else %}
+{% assign atb_show_overlay = true %}
+{% endif %}
+{% if atb_autorotate == blank %}
+{% assign atb_autorotate = false %}
+{% else %}
+{% assign atb_autorotate = true %}
+{% endif %}
+{% assign atb_autorotate_speed = atb_autorotate_speed | plus: 0 %}
+
+<style>
+  .slideshow .slideshow__slide, .slideshow .slick-list, .slideshow .slick-track {
+    cursor: pointer;
+}
+</style>
+
+<section id="shopify-section-{{section_id}}" class="shopify-section index-section index-section--flush index-section--slideshow">
+{%- if atb_slideshow_height == 'adapt' -%}
+  {% comment %}
+    'min_aspect_ratio' is the minimum aspect ratio of images shown without
+    whitespace when 'slideshow_height' is set to 'adapt'.
+    The aspect ratio values for the first image in the slideshow will be used
+    unless it is blank, in that case a ratio of 2:1 will be used.
+  {% endcomment %}
+
+  {%- assign first_block = section.blocks[0] -%}
+  {% assign my_first_key0 = block_image[0]| split: '/files/' | last %}
+  {% assign my_first_image0 = images[my_first_key0] %}
+  {%- if my_first_image0.aspect_ratio == blank -%}
+    {%- assign min_aspect_ratio = 2.0 -%}
+  {%- else -%}
+    {%- assign min_aspect_ratio = my_first_image0.aspect_ratio -%}
+  {%- endif -%}
+  {% assign wrapper_height = 100 | divided_by: min_aspect_ratio %}
+{%- endif -%}
+
+{%- assign text_alignments = atb_text_alignment | split: ' ' -%}
+{%- assign text_horizontal_alignment = text_alignments.first -%}
+{%- assign text_vertical_alignment = text_alignments.last | strip -%}
+
+<div data-section-id="{{ section_id }}" data-section-type="slideshow-section">
+  {%- if blocks.size > 0 -%}
+    <div id="SlideshowWrapper-{{ section_id }}" class="slideshow-wrapper" role="region" aria-label="slideshow" aria-describedby="slideshow-info" tabindex="-1">
+      <div class="slideshow slideshow--{{ atb_slideshow_height }}{% if display_controls %} slideshow--display-controls{% endif %}"
+           id="Slideshow-{{ section_id }}"
+           data-autorotate="{{ atb_autorotate }}"
+           data-speed="{{ atb_autorotate_speed | times: 1000 }}"
+           data-adapt-height="{% if atb_slideshow_height == 'adapt' %}true{% else %}false{% endif %}"
+           data-slide-nav-a11y="{{ 'sections.slideshow.load_slide' | t: slide_number: '[slide_number]' }}"
+           {% if atb_slideshow_height == 'adapt' %}data-min-aspect-ratio="{{ min_aspect_ratio }}"
+           style="height: {{- wrapper_height -}}vw"{% endif %}>
+
+        {%- for block0 in blocks -%}
+{% assign my_image_key0 = block_image[forloop.index0]| split: '/files/' | last %}
+{% assign my_image0 = images[my_image_key0] %}
+          <div class="slideshow__slide slideshow__slide--{{ blocks[forloop.index0] }}" {{ block.shopify_attributes }}>
+            {% if my_image0 == blank %}
+              <div class="slideshow__image js">
+                <div class="placeholder-background">
+                  {% capture current %}{% cycle 1, 2 %}{% endcapture %}
+                  {{ 'lifestyle-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+                </div>
+                {% if atb_show_overlay %}<div class="slideshow__overlay"></div>{% endif %}
+              </div>
+            {% else %}
+              <div class="slideshow__image box ratio-container lazyload{% unless forloop.first %} lazypreload{% endunless %} js"
+                   data-bgset="{% include 'bgset', image: my_image0 %}"
+                   data-sizes="auto"
+                   data-parent-fit="contain"
+                   style="background-position: {{ block_alignment[forloop.index0] }};
+                          background-image: url('{{ my_image0 | img_url: '300x300' }}');">
+                {% if atb_show_overlay %}<div class="slideshow__overlay"></div>{% endif %}
+              </div>
+            {% endif %}
+
+            <noscript>
+              <div class="slideshow__image"{% if my_image0 %} style="background-image: url('{{ my_image0 | img_url: '2048x' }}'); background-position: {{ block_alignment[forloop.index0] }};"{% endif %}>
+                {% if my_image0 == blank %}
+                  <div class="placeholder-background">
+                    {% capture current %}{% cycle 1, 2 %}{% endcapture %}
+                    {{ 'lifestyle-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+                  </div>
+                {% endif %}
+              </div>
+            </noscript>
+
+            <div class="slideshow__text-wrap slideshow__text-wrap--desktop">
+              <div class="slideshow__text-content slideshow__text-content--vertical-{{ text_vertical_alignment }} text-{{ text_horizontal_alignment }}">
+                <div class="page-width">
+                  {% unless block_slide_title[forloop.index0] == blank and block_subheading[forloop.index0] == blank %}
+                    <ul class="slideshow__text-content-list">
+                      {%- unless block_slide_title[forloop.index0] == blank -%}
+                        <li>
+                          <h2 class="h1 mega-title slideshow__title{% if atb_text_size == 'large' %} mega-title--large{% endif %}">
+                            {{ block_slide_title[forloop.index0] | escape }}
+                          </h2>
+                        </li>
+                      {%- endunless -%}
+                      {%- unless block_subheading[forloop.index0] == blank -%}
+                        <li>
+                          <span class="mega-subtitle slideshow__subtitle{% if atb_text_size == 'large' %} mega-subtitle--large{% endif %}">
+                            {{ block_subheading[forloop.index0] | escape }}
+                          </span>
+                        </li>
+                      {%- endunless -%}
+                    </ul>
+                  {% endunless %}
+
+                  {%- assign show_link_button = false -%}
+                  {%- if block_button_label[forloop.index0] != blank and block_button_link[forloop.index0] != blank -%}
+                    {%- assign show_link_button = true -%}
+                  {%- endif -%}
+                  {%- if show_link_button -%}
+                    <div class="slideshow__btn-wrapper{% if block_slide_title[forloop.index0] != blank or block_subheading[forloop.index0] != blank %} slideshow__btn-wrapper--push{% endif %}">
+                      <a href="{{ block_button_link[forloop.index0] }}" class="btn slideshow__btn">
+                        {{ block_button_label[forloop.index0] | escape }}
+                      </a>
+                    </div>
+                  {%- endif -%}
+                </div>
+              </div>
+            </div>
+          </div>
+        {%- endfor -%}
+      </div>
+      <div class="slideshow__controls">
+        {%- if blocks.size > 1 -%}
+          {%- assign arrows_width = blocks.size | times: 18 | plus: 95 -%}
+          <div class="slideshow__arrows"
+               style="width: {{- arrows_width -}}px">
+            <button class="slideshow__arrow slideshow__arrow-left" aria-label="{{ 'sections.slideshow.previous_slide' | t }}">{% include 'icon-chevron-left' %}</button>
+            <button class="slideshow__arrow slideshow__arrow-right" aria-label="{{ 'sections.slideshow.next_slide' | t }}">{% include 'icon-chevron-right' %}</button>
+          </div>
+          {%- if atb_autorotate -%}
+            <button type="button" class="slideshow__pause" data-id="{{ section_id }}" aria-live="polite" aria-pressed="false">
+              <span class="slideshow__pause-stop">
+                {% include 'icon-pause' %}
+                <span class="icon__fallback-text">{{ 'sections.slideshow.pause_slideshow' | t }}</span>
+              </span>
+              <span class="slideshow__pause-rotate">
+                {% include 'icon-resume' %}
+                <span class="icon__fallback-text">{{ 'sections.slideshow.rotate_slideshow' | t }}</span>
+              </span>
+            </button>
+          {%- endif -%}
+        {%- endif -%}
+      </div>
+    </div>
+    <div class="slideshow__text-wrap slideshow__text-wrap--mobile">
+      {% if blocks.size > 1 %}
+        <div class="slideshow__arrows slideshow__arrows--mobile">
+          <button class="slideshow__arrow slideshow__arrow-left" aria-label="{{ 'sections.slideshow.previous_slide' | t }}">{% include 'icon-chevron-left' %}</button>
+          <button class="slideshow__arrow slideshow__arrow-right" aria-label="{{ 'sections.slideshow.next_slide' | t }}">{% include 'icon-chevron-right' %}</button>
+        </div>
+      {% endif %}
+      {%- for block0 in blocks -%}
+{% assign my_image_key0 = block_image[forloop.index0]| split: '/files/' | last %}
+{% assign my_image0 = images[my_image_key0] %}
+        {%- assign show_text = false -%}
+        {%- unless block_slide_title[forloop.index0] == blank and block_subheading[forloop.index0] == blank -%}
+          {%- assign show_text = true -%}
+        {%- endunless -%}
+        {%- assign show_link_button = false -%}
+        {%- if block_button_label[forloop.index0] != blank and block_button_link[forloop.index0] != blank -%}
+          {%- assign show_link_button = true -%}
+        {%- endif -%}
+        {%- if show_text or show_link_button -%}
+          <div class="slideshow__text-content slideshow__text-content--mobile slideshow__text-content--mobile-{{ forloop.index0 }} text-center">
+            <div class="page-width">
+              {%- unless block_slide_title[forloop.index0] == blank -%}
+                <h2 class="h1 mega-title slideshow__title slideshow__title--mobile{% if atb_text_size == 'large' %} mega-title--large{% endif %}">
+                  {{ block_slide_title[forloop.index0] | escape }}
+                </h2>
+              {%- endunless -%}
+              {%- unless block_subheading[forloop.index0] == blank -%}
+                <span class="mega-subtitle slideshow__subtitle slideshow__subtitle--mobile{% if atb_text_size == 'large' %} mega-subtitle--large{% endif %}">
+                  {{ block_subheading[forloop.index0] | escape }}
+                </span>
+              {%- endunless -%}
+
+              {%- if show_link_button -%}
+                <a href="{{ block_button_link[forloop.index0] }}" class="btn slideshow__btn slideshow__btn--mobile">
+                  {{ block_button_label[forloop.index0] | escape }}
+                </a>
+              {%- endif -%}
+            </div>
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  {%- endif -%}
+
+  {% if blocks.size == 0 %}
+    <div class="placeholder-noblocks">
+      {{ 'homepage.onboarding.no_content' | t }}
+    </div>
+  {% endif %}
+</div>
+
+
+</section>

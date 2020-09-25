@@ -1,0 +1,228 @@
+{% comment %}
+ATB-SCHEMA{
+  "name": {
+    "de": "Featured Kategorie",
+    "en": "Featured collection",
+    "es": "Colección destacada",
+    "fr": "Collection vedette",
+    "it": "Collezione in evidenza",
+    "ja": "特集コレクション",
+    "pt-BR": "Coleção em destaque"
+  },
+  "class": "index-section",
+  "id": "collection",
+  "banner": "",
+  "icon": "",
+  "tags": "",
+  "description": "",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_id",
+      "label": "Section ID",
+      "info": "Enter a unique ID with only letters and numbers, no spaces",
+      "default": ""
+    },
+    {
+      "type": "text",
+      "id": "atb_title",
+      "label": {
+        "de": "Titel",
+        "en": "Heading",
+        "es": "Título",
+        "fr": "En-tête",
+        "it": "Heading",
+        "ja": "見出し",
+        "pt-BR": "Título"
+      },
+      "default": {
+        "de": "Featured Kategorie",
+        "en": "Featured collection",
+        "es": "Colección destacada",
+        "fr": "Collection vedette",
+        "it": "Collezione in evidenza",
+        "ja": "特集コレクション",
+        "pt-BR": "Coleção em destaque"
+      },
+      "info": ""
+    },
+    {
+      "id": "atb_collection",
+      "type": "collection",
+      "label": {
+        "de": "Kategorie",
+        "en": "Collection",
+        "es": "Colección",
+        "fr": "Collection",
+        "it": "Collezione",
+        "ja": "コレクション",
+        "pt-BR": "Coleção"
+      },
+      "info": ""
+    },
+    {
+      "type": "range",
+      "id": "atb_grid",
+      "label": {
+        "de": "Produkte per Reihe",
+        "en": "Products per row",
+        "es": "Productos por fila",
+        "fr": "Produits par rangée",
+        "it": "Prodotti per riga",
+        "ja": "行あたりの商品数",
+        "pt-BR": "Produtos por linha"
+      },
+      "min": 2,
+      "max": 5,
+      "step": 1,
+      "default": 3,
+      "info": ""
+    },
+    {
+      "type": "range",
+      "id": "atb_rows",
+      "label": {
+        "de": "Reihen",
+        "en": "Rows",
+        "es": "Filas",
+        "fr": "Rangées",
+        "it": "Righe",
+        "ja": "行",
+        "pt-BR": "Linhas"
+      },
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "default": 2,
+      "info": ""
+    },
+    {
+      "type": "checkbox",
+      "id": "atb_show_vendor",
+      "label": {
+        "de": "Produkt-Lieferanten anzeigen",
+        "en": "Show product vendors",
+        "es": "Mostrar proveedores del producto",
+        "fr": "Afficher les vendeurs",
+        "it": "Mostra fornitori prodotto",
+        "ja": "商品の販売元を表示する",
+        "pt-BR": "Exibir fornecedores do produto"
+      },
+      "default": false,
+      "info": ""
+    },
+    {
+      "type": "checkbox",
+      "id": "atb_show_view_all",
+      "label": {
+        "de": "'Alle anzeigen' Button anzeigen",
+        "en": "Show 'View all' button",
+        "es": "Mostrar el botón 'Ver todo'",
+        "fr": "Afficher le bouton “Tout voir”",
+        "it": "Mostra il pulsante \"Visualizza tutto\"",
+        "ja": "「すべて表示」ボタンを表示する",
+        "pt-BR": "Exibir botão 'Visualizar tudo'"
+      },
+      "default": false,
+      "info": ""
+    }
+  ],
+  "warnings": []
+}ATB-SCHEMA
+{% endcomment %}
+
+
+{% include 'atb-render' field:'section_id' %}
+{% assign section_id = val %}
+{% include 'atb-render' field:'atb_title' %}
+{% assign atb_title = val %}
+{% include 'atb-render' field:'atb_collection' %}
+{% assign atb_collection = val %}
+{% include 'atb-render' field:'atb_grid' %}
+{% assign atb_grid = val %}
+{% include 'atb-render' field:'atb_rows' %}
+{% assign atb_rows = val %}
+{% include 'atb-render' field:'atb_show_vendor' %}
+{% assign atb_show_vendor = val %}
+{% include 'atb-render' field:'atb_show_view_all' %}
+{% assign atb_show_view_all = val %}
+{% if atb_show_vendor == blank %}
+{% assign atb_show_vendor = false %}
+{% else %}
+{% assign atb_show_vendor = true %}
+{% endif %}
+{% if atb_show_view_all == blank %}
+{% assign atb_show_view_all = false %}
+{% else %}
+{% assign atb_show_view_all = true %}
+{% endif %}
+{% assign atb_grid = atb_grid | plus: 0 %}
+{% assign atb_rows = atb_rows | plus: 0 %}
+
+<section id="shopify-section-{{section_id}}" class="shopify-section index-section">
+<div class="page-width">
+  {% if atb_title != blank %}
+    <div class="section-header text-center">
+      <h2>{{ atb_title | escape }}</h2>
+    </div>
+  {% endif %}
+
+  {%- assign collection = collections[atb_collection] -%}
+
+  {% case atb_grid %}
+    {% when 2 %}
+      {%- assign max_height = 530 -%}
+      {%- assign grid_item_width = 'medium-up--one-half' -%}
+    {% when 3 %}
+      {%- assign max_height = 345 -%}
+      {%- assign grid_item_width = 'small--one-half medium-up--one-third' -%}
+    {% when 4 %}
+      {%- assign max_height = 250 -%}
+      {%- assign grid_item_width = 'small--one-half medium-up--one-quarter' -%}
+    {% when 5 %}
+      {%- assign max_height = 195 -%}
+      {%- assign grid_item_width = 'small--one-half medium-up--one-fifth' -%}
+  {% endcase %}
+
+  {%- assign product_limit = atb_grid | times: atb_rows -%}
+
+  <ul class="grid grid--uniform grid--view-items">
+    {% for product in collection.products limit: product_limit %}
+      <li class="grid__item grid__item--{{section_id}} {{ grid_item_width }}">
+        {% include 'product-card-grid', max_height: max_height %}
+      </li>
+    {% else %}
+
+      {% for i in (1..product_limit) %}
+        <li class="grid__item grid__item--{{section_id}} {{ grid_item_width }}">
+          <div class="grid-view-item product-card">
+            <a class="grid-view-item__link grid-view-item__image-container full-width-link" href="#">
+              <span class="visually-hidden">{{ 'homepage.onboarding.product_title' | t }}</span>
+            </a>
+            <div class="grid-view-item__image-wrapper">
+              {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+              {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+            </div>
+            <div class="h4 grid-view-item__title" aria-hidden="true">{{ 'homepage.onboarding.product_title' | t }}</div>
+            {% include 'product-price' %}
+          </div>
+        </li>
+      {% endfor %}
+    {% endfor %}
+  </ul>
+
+  {% if atb_show_view_all %}
+    <hr class="hr--invisible" aria-hidden="true" />
+    <div class="text-center">
+      <a href="{{ collection.url }}" class="btn" aria-label="{{ 'collections.general.view_all_label' | t: collection_name: collection.title }}">
+        {{ 'collections.general.view_all' | t }}
+      </a>
+    </div>
+  {% endif %}
+
+</div>
+
+
+
+
+</section>

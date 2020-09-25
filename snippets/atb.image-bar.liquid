@@ -1,0 +1,185 @@
+{% comment %}
+ATB-SCHEMA{
+  "name": "Gallery",
+  "class": "index-section index-section--flush",
+  "max_blocks": 4,
+  "id": "image-bar",
+  "banner": "",
+  "icon": "",
+  "tags": "",
+  "description": "",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_id",
+      "label": "Section ID",
+      "info": "Enter a unique ID with only letters and numbers, no spaces",
+      "default": ""
+    },
+    {
+      "type": "select",
+      "id": "atb_section_height",
+      "label": "Section height",
+      "default": "medium",
+      "options": [
+        {
+          "label": "Extra Small",
+          "value": "x-small"
+        },
+        {
+          "label": "Small",
+          "value": "small"
+        },
+        {
+          "label": "Medium",
+          "value": "medium"
+        },
+        {
+          "label": "Large",
+          "value": "large"
+        },
+        {
+          "label": "Extra Large",
+          "value": "x-large"
+        }
+      ],
+      "info": ""
+    },
+    {
+      "type": "text",
+      "id": "blocks",
+      "label": "Block ID",
+      "info": "Enter a unique ID with only letters and numbers, no spaces",
+      "default": "",
+      "repeatable": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "block_image",
+      "label": "Image",
+      "repeatable": "Image",
+      "info": ""
+    },
+    {
+      "type": "select",
+      "id": "block_alignment",
+      "label": "Image alignment",
+      "default": "center",
+      "options": [
+        {
+          "value": "top",
+          "label": "Top"
+        },
+        {
+          "value": "center",
+          "label": "Middle"
+        },
+        {
+          "value": "bottom",
+          "label": "Bottom"
+        }
+      ],
+      "repeatable": "Image",
+      "info": ""
+    },
+    {
+      "type": "text",
+      "id": "block_link",
+      "label": "Link",
+      "info": "",
+      "repeatable": "Image"
+    },
+    {
+      "type": "text",
+      "id": "block_cta_label",
+      "label": "Caption",
+      "repeatable": "Image",
+      "info": ""
+    }
+  ],
+  "warnings": [
+    "repeating image fields may not be properly handled"
+  ]
+}ATB-SCHEMA
+{% endcomment %}
+
+
+{% include 'atb-render' field:'section_id' %}
+{% assign section_id = val %}
+{% include 'atb-render' field:'atb_section_height' %}
+{% assign atb_section_height = val %}
+{% include 'atb-render' field:'blocks' %}
+{% assign blocks = val %}
+{% include 'atb-render' field:'block_image' %}
+{% assign block_image = val %}
+{% include 'atb-render' field:'block_alignment' %}
+{% assign block_alignment = val %}
+{% include 'atb-render' field:'block_link' %}
+{% assign block_link = val %}
+{% include 'atb-render' field:'block_cta_label' %}
+{% assign block_cta_label = val %}
+
+<section id="shopify-section-{{section_id}}" class="shopify-section index-section index-section--flush">
+<div class="grid grid--no-gutters image-bar image-bar--{{ atb_section_height }}">
+  {% case blocks.size %}
+    {% when 1 %}
+      {%- assign column_size = '' -%}
+    {% when 2 %}
+      {%- assign column_size = 'medium-up--one-half' -%}
+    {% when 3 %}
+      {%- assign column_size = 'medium-up--one-third' -%}
+    {% else %}
+      {%- assign column_size = 'medium-up--one-quarter' -%}
+  {% endcase %}
+
+  {% for block0 in blocks %}
+{% assign my_image_key0 = block_image[forloop.index0]| split: '/files/' | last %}
+{% assign my_image0 = images[my_image_key0] %}
+    <div class="grid__item {{ column_size }} js" {{ block.shopify_attributes }}>
+      {% if block_link[forloop.index0] != blank %}
+        <a class="image-bar__link" href="{{ block_link[forloop.index0] }}">
+          <div class="image-bar__item box ratio-container lazyload"
+               data-bgset="{% include 'bgset', image: my_image0 %}"
+               data-sizes="auto"
+               data-parent-fit="cover"
+               style="background-position: {{ block_alignment[forloop.index0] }}; background-image: url('{{ my_image0 | img_url: '300x300' }});">
+      {% elsif my_image0 != blank %}
+        <div class="image-bar__item image-bar__item--{{ blocks[forloop.index0] }} box ratio-container lazyload"
+             data-bgset="{% include 'bgset', image: my_image0 %}"
+             data-sizes="auto"
+             data-parent-fit="cover"
+             style="background-position: {{ block_alignment[forloop.index0] }}; background-image: url('{{ my_image0 | img_url: '300x300' }});">
+      {% else %}
+        <div class="image-bar__item">
+      {% endif %}
+      <div class="image-bar__content{% if block_cta_label[forloop.index0] != blank %} image-bar__overlay{% endif %}">
+        {% if my_image0 == blank %}
+          {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+        {% endif %}
+
+        {% if block_cta_label[forloop.index0] != blank %}
+          <div class="image-bar__text">
+            <h3 class="image-bar__caption">{{ block_cta_label[forloop.index0] | escape }}</h3>
+          </div>
+        {% endif %}
+      </div>
+      {% if block_link[forloop.index0] != blank %}
+        </div></a>
+      {% else %}
+        </div>
+      {% endif %}
+    </div>
+    <noscript>
+      <div class="grid__item {{ column_size }}" {{ block.shopify_attributes }}>
+        <div class="image-bar__item image-bar__item--{{ blocks[forloop.index0] }}" style="background-image: url({{ my_image0 | img_url: '2048x' }});"></div>
+      </div>
+    </noscript>
+  {% endfor %}
+</div>
+
+{% if blocks.size == 0 %}
+  {% include 'no-blocks' %}
+{% endif %}
+
+
+</section>

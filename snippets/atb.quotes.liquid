@@ -1,0 +1,149 @@
+{% comment %}
+ATB-SCHEMA{
+  "name": {
+    "de": "Testimonials",
+    "en": "Testimonials",
+    "es": "Testimonios",
+    "fr": "Témoignages",
+    "it": "Testimonial",
+    "ja": "お客様の声",
+    "pt-BR": "Depoimentos"
+  },
+  "class": "index-section",
+  "max_blocks": 9,
+  "id": "quotes",
+  "banner": "",
+  "icon": "",
+  "tags": "",
+  "description": "",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_id",
+      "label": "Section ID",
+      "info": "Enter a unique ID with only letters and numbers, no spaces",
+      "default": ""
+    },
+    {
+      "type": "text",
+      "id": "atb_title",
+      "label": {
+        "de": "Titel",
+        "en": "Heading",
+        "es": "Título",
+        "fr": "En-tête",
+        "it": "Heading",
+        "ja": "見出し",
+        "pt-BR": "Título"
+      },
+      "default": {
+        "de": "Testimonials",
+        "en": "Testimonials",
+        "es": "Testimonios",
+        "fr": "Témoignages",
+        "it": "Testimonial",
+        "ja": "お客様の声",
+        "pt-BR": "Depoimentos"
+      },
+      "info": ""
+    },
+    {
+      "type": "html",
+      "id": "block_quote",
+      "label": {
+        "de": "Text",
+        "en": "Text",
+        "es": "Texto",
+        "fr": "Texte",
+        "it": "Testo",
+        "ja": "テキスト",
+        "pt-BR": "Texto"
+      },
+      "default": {
+        "de": "<p>Kunden-Reviews und Testimonials, die Kundenzufriedenheit beweisen.</p>",
+        "en": "<p>Add customer reviews and testimonials to showcase your store’s happy customers.</p>",
+        "es": "<p>Agrega las reseñas y los testimonios de los clientes para mostrar a los clientes satisfechos de tu tienda.</p>",
+        "fr": "<p>Ajoutez des avis et témoignages pour mettre en avant vos clients satisfaits.</p>",
+        "it": "<p>Aggiungi recensioni e testimonianze sul tuo negozio per dimostrare che i clienti sono soddisfatti.</p>",
+        "ja": "<p>あなたのストアの幸せなお客様を紹介するために、カスタマーレビューとお客様の声を追加してください。</p>",
+        "pt-BR": "<p>Adicione comentários e depoimentos de clientes para destacar os clientes felizes da sua loja.</p>"
+      },
+      "repeatable": "Testimonial",
+      "info": ""
+    },
+    {
+      "type": "text",
+      "id": "block_author",
+      "label": {
+        "de": "Autor",
+        "en": "Author",
+        "es": "Autor",
+        "fr": "Auteur",
+        "it": "Autore",
+        "ja": "執筆者",
+        "pt-BR": "Autoria"
+      },
+      "default": {
+        "de": "Name des Autors",
+        "en": "Author's name",
+        "es": "Nombre del autor",
+        "fr": "Nom de l'auteur",
+        "it": "Nome dell'autore",
+        "ja": "筆者の名前",
+        "pt-BR": "Nome do(a) autor(a)"
+      },
+      "repeatable": "Testimonial",
+      "info": ""
+    }
+  ],
+  "warnings": []
+}ATB-SCHEMA
+{% endcomment %}
+
+
+{% include 'atb-render' field:'section_id' %}
+{% assign section_id = val %}
+{% include 'atb-render' field:'atb_title' %}
+{% assign atb_title = val %}
+{% include 'atb-render' field:'block_quote' %}
+{% assign block_quote = val %}
+{% include 'atb-render' field:'block_author' %}
+{% assign block_author = val %}
+
+<section id="shopify-section-{{section_id}}" class="shopify-section index-section">
+<div class="page-width" data-section-id="{{ section_id }}" data-section-type="quotes">
+  {% if atb_title != blank %}
+    <div class="section-header text-center">
+      <h2>{{ atb_title | escape }}</h2>
+    </div>
+  {% endif %}
+
+  {% if block_quote.size > 0 %}
+    <div class="quotes-wrapper">
+      <div class="quotes-slider" id="Quotes-{{ section_id }}" data-count="{{ block_quote.size }}">
+        {% for block_quote0 in block_quote %}
+          <div class="quotes-slide--{{ block.id }}" {{ block.shopify_attributes }}>
+            <blockquote class="quotes-slider__text text-center">
+              <span class="quote-icon">{% include 'icon-quote' %}</span>
+              {% if block_quote[forloop.index0] != blank %}
+                <div class="rte-setting rte">{{ block_quote[forloop.index0] }}</div>
+              {% endif %}
+              {% if block_author[forloop.index0] != blank %}
+                <cite>{{ block_author[forloop.index0] | escape }}</cite>
+              {% endif %}
+            </blockquote>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  {% endif %}
+
+  {% if block_quote.size == 0 %}
+    {% include 'no-blocks' %}
+  {% endif %}
+</div>
+
+
+
+
+</section>

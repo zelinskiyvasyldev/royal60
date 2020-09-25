@@ -1,0 +1,406 @@
+{% comment %}
+ATB-SCHEMA{
+  "name": {
+    "de": "Karte",
+    "en": "Map",
+    "es": "Mapa",
+    "fr": "Carte",
+    "it": "Mappa",
+    "ja": "マップ",
+    "pt-BR": "Mapa"
+  },
+  "class": "index-section index-section--flush-medium-up",
+  "id": "map",
+  "banner": "",
+  "icon": "",
+  "tags": "",
+  "description": "",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_id",
+      "label": "Section ID",
+      "info": "Enter a unique ID with only letters and numbers, no spaces",
+      "default": ""
+    },
+    {
+      "id": "atb_heading",
+      "type": "text",
+      "label": {
+        "de": "Titel",
+        "en": "Heading",
+        "es": "Título",
+        "fr": "En-tête",
+        "it": "Heading",
+        "ja": "見出し",
+        "pt-BR": "Título"
+      },
+      "default": {
+        "de": "Unser Laden",
+        "en": "Our store",
+        "es": "Nuestra tienda",
+        "fr": "Notre boutique",
+        "it": "Il nostro negozio",
+        "ja": "私たちのストア",
+        "pt-BR": "Nossa loja"
+      },
+      "info": ""
+    },
+    {
+      "id": "atb_address",
+      "type": "html",
+      "label": {
+        "de": "Adresse und Öffnungszeiten",
+        "en": "Address and hours",
+        "es": "Dirección y horario",
+        "fr": "Adresse et heures d'ouverture",
+        "it": "Indirizzo e orari",
+        "ja": "住所と営業時間",
+        "pt-BR": "Endereço e horário"
+      },
+      "default": {
+        "de": "<p>Musterstraße 123<br>12345 Musterstadt</p><p>Mo - Fr, 10 - 21 Uhr<br>Samstag, 11 - 21 Uhr<br>Sonntag, Ruhetag</p>",
+        "en": "<p>123 Fake St.<br>Toronto, Canada</p><p>Mon - Fri, 10am - 9pm<br>Saturday, 11am - 9pm<br>Sunday, 11am - 5pm</p>",
+        "es": "<p>123 Fake St. <br> Toronto, Canadá</p><p>Lun - Vie, 10 a.m. - 9 p.m. <br> Sábados, de 11 am a 09 pm <br> Domingos, de 11 am a 05 pm</p>",
+        "fr": "<p>123 5e Avenue<br>Toronto, Canada</p><p>Lundi au vendredi, 10 h 00 à 21 h 00<br>Samedi, 11 h 00 à 21 h 00<br>Dimanche, fermé",
+        "it": "<p>123 Fake St.<br>Toronto, Canada</p><p>Lun-Ven, 10:00 - 21:00<br>Sabato, 11:00 - 21:00<br>Domenica, 11:00 - 17:00</p>",
+        "ja": "<p>123 Fake St.<br>Toronto, Canada</p><p>月曜日～金曜日、午前10時〜午後9時<br>土曜日、午前11時〜午後9時<br>日曜日、午前11時〜午後5時</p>",
+        "pt-BR": "<p>123 Rua Inventada<br> São Paulo, Brasil</p><p>Seg. - Sex., 10h às 21h <br> Sábado, 11h às 21h <br> Domingo, 11h às 17h</p>"
+      },
+      "info": ""
+    },
+    {
+      "id": "atb_map_address",
+      "type": "text",
+      "label": {
+        "de": "Adresse",
+        "en": "Map address",
+        "es": "Dirección en el mapa",
+        "fr": "Adresse de la carte",
+        "it": "Indirizzo su mappa",
+        "ja": "マップアドレス",
+        "pt-BR": "Endereço no mapa"
+      },
+      "info": "",
+      "default": {
+        "de": "4141 Pierre-de Coubertin Ave, Montreal",
+        "en": "301 Front St W, Toronto",
+        "es": "301 Front St W, Toronto",
+        "fr": "Arsenalo g. 5, Vilnius",
+        "it": "301 Front St W, Toronto",
+        "ja": "301 Front St W, Toronto",
+        "pt-BR": "Av. Paulista, 1234, São Paulo"
+      }
+    },
+    {
+      "id": "atb_button_text",
+      "type": "text",
+      "label": {
+        "de": "Link auf der Karte",
+        "en": "Map link label",
+        "es": "Etiqueta de enlace de mapa",
+        "fr": "Texte du lien de la carte",
+        "it": "Etichetta del link alla mappa",
+        "ja": "マップリンクラベル",
+        "pt-BR": "Etiqueta de link do mapa"
+      },
+      "default": {
+        "de": "Wegbeschreibung bekommen",
+        "en": "Get directions",
+        "es": "Recibir instrucciones",
+        "fr": "Obtenir un itinéraire",
+        "it": "Richiedi direzioni",
+        "ja": "道順を知る",
+        "pt-BR": "Obter direções"
+      },
+      "info": ""
+    },
+    {
+      "id": "atb_show_pin",
+      "type": "checkbox",
+      "label": {
+        "de": "Pin anzeigen",
+        "en": "Show pin",
+        "es": "Ver pin",
+        "fr": "Afficher l'épingle",
+        "it": "Mostra pin",
+        "ja": "ピンを表示する",
+        "pt-BR": "Mostrar pin"
+      },
+      "default": true,
+      "info": ""
+    },
+    {
+      "id": "atb_api_key",
+      "type": "text",
+      "label": {
+        "de": "Google Maps API Key",
+        "en": "Google Maps API key",
+        "es": "Registrar una clave API de Google Maps",
+        "fr": "Clé d'API Google Maps",
+        "it": "Chiave API di Google Maps",
+        "ja": "GoogleマップのAPIキー",
+        "pt-BR": "Chave da API do Google Maps"
+      },
+      "info": ""
+    },
+    {
+      "type": "image_picker",
+      "id": "atb_background_image",
+      "label": {
+        "de": "Foto",
+        "en": "Image",
+        "es": "Imagen",
+        "fr": "Image",
+        "it": "Immagine",
+        "ja": "画像",
+        "pt-BR": "Imagem"
+      },
+      "info": ""
+    },
+    {
+      "type": "select",
+      "id": "atb_background_image_position",
+      "label": {
+        "de": "Foto-Position",
+        "en": "Image position",
+        "es": "Posición de la imagen",
+        "fr": "Position de l'image",
+        "it": "Posizione Immagine",
+        "ja": "画像の位置",
+        "pt-BR": "Posição da imagem"
+      },
+      "default": "center center",
+      "options": [
+        {
+          "label": {
+            "de": "Oben links",
+            "en": "Top left",
+            "es": "Superior izquierda",
+            "fr": "En haut à gauche",
+            "it": "In alto a sinistra",
+            "ja": "左上",
+            "pt-BR": "Superior esquerdo"
+          },
+          "value": "top left"
+        },
+        {
+          "label": {
+            "de": "Oben Mitte",
+            "en": "Top center",
+            "es": "Superior al centro",
+            "fr": "En haut au centre",
+            "it": "In alto al centro",
+            "ja": "中央上",
+            "pt-BR": "Superior centro"
+          },
+          "value": "top center"
+        },
+        {
+          "label": {
+            "de": "Oben rechts",
+            "en": "Top right",
+            "es": "Superior derecha",
+            "fr": "En haut à droite",
+            "it": "In alto a destra",
+            "ja": "右上",
+            "pt-BR": "Superior direito"
+          },
+          "value": "top right"
+        },
+        {
+          "label": {
+            "de": "Mitte links",
+            "en": "Middle left",
+            "es": "Al medio a la izquierda",
+            "fr": "Au milieu à gauche",
+            "it": "Nel mezzo a sinistra",
+            "ja": "中央左",
+            "pt-BR": "Meio esquerdo"
+          },
+          "value": "center left"
+        },
+        {
+          "label": {
+            "de": "Mitte mittig",
+            "en": "Middle center",
+            "es": "Al medio al centro",
+            "fr": "Centrée au milieu",
+            "it": "In mezzo",
+            "ja": "中央中",
+            "pt-BR": "Meio centro"
+          },
+          "value": "center center"
+        },
+        {
+          "label": {
+            "de": "Mitte rechts",
+            "en": "Middle right",
+            "es": "Al medio a la derecha",
+            "fr": "Au milieu à droite",
+            "it": "Nel mezzo a destra",
+            "ja": "中央右",
+            "pt-BR": "Meio direito"
+          },
+          "value": "center right"
+        },
+        {
+          "label": {
+            "de": "Unten links",
+            "en": "Bottom left",
+            "es": "Inferior izquierda",
+            "fr": "En bas à gauche",
+            "it": "In basso a sinistra",
+            "ja": "左下",
+            "pt-BR": "Inferior esquerdo"
+          },
+          "value": "bottom left"
+        },
+        {
+          "label": {
+            "de": "Unten mittig",
+            "en": "Bottom center",
+            "es": "Inferior al centro",
+            "fr": "En bas au centre",
+            "it": "In basso al centro",
+            "ja": "中央下",
+            "pt-BR": "Inferior centro"
+          },
+          "value": "bottom center"
+        },
+        {
+          "label": {
+            "de": "Unten rechts",
+            "en": "Bottom right",
+            "es": "Inferior derecha",
+            "fr": "En bas à droite",
+            "it": "In basso a destra",
+            "ja": "右下",
+            "pt-BR": "Inferior direito"
+          },
+          "value": "bottom right"
+        }
+      ],
+      "info": ""
+    }
+  ],
+  "warnings": []
+}ATB-SCHEMA
+{% endcomment %}
+
+
+{% include 'atb-render' field:'section_id' %}
+{% assign section_id = val %}
+{% include 'atb-render' field:'atb_heading' %}
+{% assign atb_heading = val %}
+{% include 'atb-render' field:'atb_address' %}
+{% assign atb_address = val %}
+{% include 'atb-render' field:'atb_map_address' %}
+{% assign atb_map_address = val %}
+{% include 'atb-render' field:'atb_button_text' %}
+{% assign atb_button_text = val %}
+{% include 'atb-render' field:'atb_show_pin' %}
+{% assign atb_show_pin = val %}
+{% include 'atb-render' field:'atb_api_key' %}
+{% assign atb_api_key = val %}
+{% include 'atb-render' field:'atb_background_image' %}
+{% assign atb_background_image = val %}
+{% include 'atb-render' field:'atb_background_image_position' %}
+{% assign atb_background_image_position = val %}
+{% if atb_show_pin == blank %}
+{% assign atb_show_pin = false %}
+{% else %}
+{% assign atb_show_pin = true %}
+{% endif %}
+{% assign atb_background_image_key = atb_background_image| split: '/files/' | last %}{% assign atb_background_image = images[atb_background_image_key] %}
+<section id="shopify-section-{{section_id}}" class="shopify-section index-section index-section--flush-medium-up">
+{%- assign display_map = false -%}
+{%- assign onboarding = false -%}
+{%- assign bg_image = atb_background_image -%}
+
+{%- if atb_api_key == blank and bg_image == blank -%}
+  {%- assign onboarding = true -%}
+{%- endif -%}
+{%- if atb_api_key != blank and atb_map_address -%}
+  {%- assign display_map = true -%}
+{%- endif -%}
+
+<style>
+  {% if bg_image.src != blank %}
+  #MapSection--{{ section_id }} .map-section__image {
+    background-position: {{ atb_background_image_position }};
+  }
+
+  @media only screen and (max-width: 750px) {
+    #MapSection--{{ section_id }} .map-section__image {
+      padding-top: {{ 1 | divided_by: bg_image.aspect_ratio | times: 100 }}%;
+    }
+  }
+  {% endif %}
+</style>
+
+
+<div id="MapSection--{{ section_id }}"
+     class="map-section
+           {% if display_map %}map-section--display-map{% endif %}
+           {% if onboarding == true %}map-section--onboarding{% endif %}"
+     data-section-id="{{ section_id }}"
+     data-section-type="map">
+  <div class="page-width map-section__wrapper">
+    <div class="map-section__content-wrapper">
+      <div class="map-section__content">
+        <h2 class="visually-hidden visually-hidden--static">{{ 'sections.map.section_heading' | t }}</h2>
+        {% if atb_heading != blank %}
+          <h3 class="h4">{{ atb_heading | escape }}</h3>
+        {% endif %}
+        {% if atb_address != blank %}
+          <div class="rte-setting">{{ atb_address }}</div>
+          {% if atb_map_address != blank and atb_button_text != blank %}
+            <p>
+              <a href="https://maps.google.com?daddr={{ atb_map_address | escape }}"
+                 class="btn btn--secondary btn--small map_section__directions-btn"
+                 target="_blank"
+                 rel="noopener"
+                 aria-describedby="a11y-new-window-external-message"
+              >
+                {% if atb_show_pin %}{% include 'atb-icon-pin' %}{% endif %}
+                <span>{{ atb_button_text | escape }}</span>
+              </a>
+            </p>
+          {% endif %}
+        {% endif %}
+      </div>
+    </div>
+    <div class="map-section__background-wrapper">
+      {% if bg_image != blank %}
+        <div class="map-section__image lazyload js"
+             data-bgset="{% include 'bgset', image: bg_image %}"
+             data-sizes="auto"
+             data-parent-fit="cover"
+             style="background-image: url('{{ bg_image | img_url: '300x300' }});">
+        </div>
+        <noscript>
+          <div class="map-section__image" style="background-image: url({{ bg_image | img_url: 'x800', crop: 'top' }});"></div>
+        </noscript>
+      {% elsif onboarding == true %}
+        <div class="placeholder-background">
+          {{ 'lifestyle-2' | placeholder_svg_tag: 'placeholder-svg' }}
+        </div>
+      {% endif %}
+      {% if display_map %}
+        <div class="map-section__container"
+             id="Map-{{ section_id }}"
+             data-map
+             data-address-setting="{{ atb_map_address | escape }}"
+             data-api-key="{{ atb_api_key }}">
+        </div>
+        <div class="map-section__overlay" data-map-overlay></div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+
+
+
+</section>

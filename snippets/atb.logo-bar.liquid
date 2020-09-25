@@ -1,0 +1,135 @@
+{% comment %}
+ATB-SCHEMA{
+  "name": {
+    "de": "Logo-Liste",
+    "en": "Logo list",
+    "es": "Lista de logotipos",
+    "fr": "Liste des logos",
+    "it": "Elenco loghi",
+    "ja": "ロゴリスト",
+    "pt-BR": "Lista de logotipos"
+  },
+  "class": "index-section",
+  "max_blocks": 20,
+  "id": "logo-bar",
+  "banner": "",
+  "icon": "",
+  "tags": "",
+  "description": "",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_id",
+      "label": "Section ID",
+      "info": "Enter a unique ID with only letters and numbers, no spaces",
+      "default": ""
+    },
+    {
+      "type": "text",
+      "id": "atb_title",
+      "label": {
+        "de": "Titel",
+        "en": "Heading",
+        "es": "Título",
+        "fr": "En-tête",
+        "it": "Heading",
+        "ja": "見出し",
+        "pt-BR": "Título"
+      },
+      "default": {
+        "de": "Logo-Liste",
+        "en": "Logo list",
+        "es": "Lista de logotipos",
+        "fr": "Liste de logos",
+        "it": "Elenco loghi",
+        "ja": "ロゴリスト",
+        "pt-BR": "Lista de logotipos"
+      },
+      "info": ""
+    },
+    {
+      "type": "image_picker",
+      "id": "block_image",
+      "label": {
+        "de": "Foto",
+        "en": "Image",
+        "es": "Imagen",
+        "fr": "Image",
+        "it": "Immagine",
+        "ja": "画像",
+        "pt-BR": "Imagem"
+      },
+      "repeatable": "Logo",
+      "info": ""
+    },
+    {
+      "type": "text",
+      "id": "block_link",
+      "label": {
+        "de": "Link",
+        "en": "Link",
+        "es": "Enlace",
+        "fr": "Lien",
+        "it": "Link",
+        "ja": "リンク",
+        "pt-BR": "Link"
+      },
+      "info": "",
+      "repeatable": "Logo"
+    }
+  ],
+  "warnings": [
+    "repeating image fields may not be properly handled"
+  ]
+}ATB-SCHEMA
+{% endcomment %}
+
+
+{% include 'atb-render' field:'section_id' %}
+{% assign section_id = val %}
+{% include 'atb-render' field:'atb_title' %}
+{% assign atb_title = val %}
+{% include 'atb-render' field:'block_image' %}
+{% assign block_image = val %}
+{% include 'atb-render' field:'block_link' %}
+{% assign block_link = val %}
+
+<section id="shopify-section-{{section_id}}" class="shopify-section index-section">
+<div class="page-width">
+  {% if atb_title != blank %}
+    <div class="section-header text-center">
+      <h2>{{ atb_title | escape }}</h2>
+    </div>
+  {% endif %}
+
+  {% if block_image.size > 0 %}
+    <ul class="logo-bar{% if atb_title_enable %} logo-bar--large{% endif %}">
+      {% for block_image0 in block_image %}
+{% assign my_image_key0 = block_image[forloop.index0]| split: '/files/' | last %}
+{% assign my_image0 = images[my_image_key0] %}
+        <li class="logo-bar__item{% if atb_title_enable %} logo-bar__item--large{% endif %}" {{ block.shopify_attributes }}>
+          {% if block_link[forloop.index0] != blank %}
+            <a href="{{ block_link[forloop.index0] }}" class="logo-bar__link">
+          {% endif %}
+          {% if my_image0 != blank %}
+            {{ my_image0 | img_url: '160x160', scale: 2 | img_tag: block_image[forloop.index0].alt, 'logo-bar__image' }}
+          {% else %}
+            {{ 'logo' | placeholder_svg_tag: 'placeholder-svg' }}
+          {% endif %}
+          {% if block_link[forloop.index0] != blank %}
+            </a>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+  {% if block_image.size == 0 %}
+    {% include 'no-blocks' %}
+  {% endif %}
+</div>
+
+
+
+
+</section>
