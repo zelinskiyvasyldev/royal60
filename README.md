@@ -1,2 +1,2 @@
-# Royal60
-Project for Vasil Zelinskiy
+Royal 60 #shopify store
+
