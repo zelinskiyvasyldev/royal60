@@ -1,4 +1,8 @@
-<!--AZEXO_sections/quotes.liquid_Section--><div class="page-width" data-section-id="{{ section.id }}" data-section-type="quotes">
+<!--AZEXO_sections/quotes.liquid_Section-->
+<div class='qoutes-border'>
+
+</div>
+<div class="page-width quotes-black" data-section-id="{{ section.id }}" data-section-type="quotes">
   {% if section.settings.title != blank %}
     <div class="section-header text-center">
       <h2>{{ section.settings.title | escape }}</h2>
@@ -6,7 +10,8 @@
   {% endif %}
 
   {% if section.blocks.size > 0 %}
-    <div class="quotes-wrapper" data-slider>
+
+    <div class="quotes-wrapper quotes-bording" data-slider>
       <div class="quotes-slider-wrapper" data-slider-container>
         <div class="quotes-slider" id="Quotes-{{ section.id }}" data-count="{{ section.blocks.size }}" data-slider-track>
           {% for block in section.blocks %}
@@ -22,6 +27,7 @@
                 {% if block.settings.quote != blank %}
                   <div class="rte-setting rte">{{ block.settings.quote }}</div>
                 {% endif %}
+                <span class="quote-icon">{% include 'icon-quote-close' %}</span>
                 {% if block.settings.author != blank %}
                   <cite>{{ block.settings.author | escape }}</cite>
                 {% endif %}
